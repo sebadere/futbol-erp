@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="540" viewBox="0 0 820 540" fill="none">
+  <defs>
+    <linearGradient id="g" x1="80" y1="30" x2="760" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B63FF" stop-opacity="0.18"/>
+      <stop offset="0.55" stop-color="#2DD4BF" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#FFDB00" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="grass" x1="0" y1="0" x2="0" y2="540" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2CBF63"/>
+      <stop offset="1" stop-color="#179654"/>
+    </linearGradient>
+  </defs>
+  <rect width="820" height="540" rx="48" fill="url(#grass)"/>
+  <rect width="820" height="540" rx="48" fill="url(#g)"/>
+  <path d="M410 60v420" stroke="rgba(255,255,255,0.22)" stroke-width="10"/>
+  <circle cx="410" cy="270" r="70" stroke="rgba(255,255,255,0.24)" stroke-width="10"/>
+  <path d="M120 140h160v260H120z" stroke="rgba(255,255,255,0.18)" stroke-width="10"/>
+  <path d="M540 140h160v260H540z" stroke="rgba(255,255,255,0.18)" stroke-width="10"/>
+</svg>
+
