@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Fútbol ERP: planificación, comunicación, pagos y analítica para clubes y academias."
+      content="Un experto AI para tu club: conectamos tus datos, los centralizamos y te damos un chat que responde con insights accionables para decidir mejor."
     />
-    <title>Fútbol ERP — Gestión para clubes</title>
+    <title>Fútbol ERP AI — Experto del club</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <script type="module" src="/src/main.js"></script>
   </head>
@@ -33,15 +33,15 @@
           </button>
           <div class="nav-panel" id="nav-panel">
             <div class="nav-links" id="nav-links">
-              <a href="#caracteristicas">Características</a>
-              <a href="#precios">Precios</a>
-              <a href="#deportes">Deportes</a>
-              <a href="#reseñas">Reseñas</a>
-              <a href="#recursos">Recursos</a>
+              <a href="#fuentes">Fuentes de datos</a>
+              <a href="#centralizacion">Centralización</a>
+              <a href="#experto">Experto AI</a>
+              <a href="#implementacion">Implementación</a>
+              <a href="#faq">FAQ</a>
             </div>
             <div class="nav-actions">
-              <a class="btn btn-outline" href="#demo">Iniciar sesión</a>
-              <a class="btn btn-yellow" href="#demo">Reservá una demo gratuita</a>
+              <a class="btn btn-outline" href="#experto">Probar demo</a>
+              <a class="btn btn-yellow" href="#demo">Reservá una demo</a>
             </div>
           </div>
         </nav>
@@ -52,21 +52,41 @@
       <section class="hero" id="top">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <p class="hero-eyebrow">Sacá todo el potencial de tu club</p>
-            <h1>Software de gestión para clubes deportivos</h1>
+            <p class="hero-eyebrow">Decidí mejor, más rápido y con menos esfuerzo</p>
+            <h1>El experto AI de tu club, conectado a tus datos</h1>
             <p class="lead">
-              Organizá entrenamientos, comunicación, registros y finanzas sin saltar entre
-              apps. Menos tareas repetitivas. Más foco en rendimiento y crecimiento.
+              Conectamos tus fuentes (pagos, asistencia, entrenamientos, CRM, planillas) y
+              las centralizamos para que un experto de dominio responda con
+              <strong>insights accionables</strong>, alertas y recomendaciones en un chat.
             </p>
             <div class="cta-row">
               <a class="btn btn-yellow" href="#demo">
-                Contactá con ventas
+                Reservá una demo
                 <span class="btn-icon" aria-hidden="true">→</span>
               </a>
-              <a class="btn btn-outline" href="#caracteristicas">
+              <a class="btn btn-outline" href="#experto">
                 <span class="btn-icon play" aria-hidden="true"></span>
-                Cómo lo usan los clubes
+                Probar el experto
               </a>
+            </div>
+
+            <div class="value-strip" aria-label="Promesa y garantías (ilustrativas)">
+              <div class="value-pill">
+                <span class="value-kicker">Resultado</span>
+                <span class="value-text">3 decisiones mejores por semana</span>
+              </div>
+              <div class="value-pill">
+                <span class="value-kicker">Tiempo</span>
+                <span class="value-text">primeros insights en 14 días</span>
+              </div>
+              <div class="value-pill">
+                <span class="value-kicker">Esfuerzo</span>
+                <span class="value-text">sin migraciones dolorosas</span>
+              </div>
+              <div class="value-pill">
+                <span class="value-kicker">Certeza</span>
+                <span class="value-text">modelo de datos + playbooks</span>
+              </div>
             </div>
           </div>
 
@@ -127,32 +147,23 @@
 
               <div class="device phone" aria-hidden="true">
                 <div class="phone-top">
-                  <div class="phone-title">Club FC</div>
+                  <div class="phone-title">Experto AI</div>
                   <div class="phone-user"></div>
                 </div>
-                <div class="phone-card">
-                  <div class="phone-card-title">Próximos eventos</div>
-                  <div class="event">
-                    <div class="event-date">18</div>
-                    <div class="event-meta">
-                      <div class="event-team">Águilas FC</div>
-                      <div class="event-sub">Sábado · 12:00 · En casa</div>
-                    </div>
-                    <div class="event-pill">Partido</div>
+                <div class="phone-card chat-preview">
+                  <div class="bubble user">
+                    ¿Cómo viene la morosidad y dónde actuar primero?
                   </div>
-                </div>
-                <div class="phone-card">
-                  <div class="phone-card-title">Pared</div>
-                  <div class="post">
-                    <div class="post-head">
-                      <span class="mini-avatar"></span>
-                      <span class="post-name">John</span>
-                      <span class="post-time">hace 3h</span>
-                    </div>
-                    <div class="post-body">
-                      Hoy el equipo, gran trabajo. ¿Podés ver el clip del partido y dejar
-                      feedback?
-                    </div>
+                  <div class="bubble ai">
+                    Hoy: <strong>8.4%</strong> (↑ +1.1pp vs. mes anterior). 3 acciones:
+                    <ol>
+                      <li>segmentar “pendientes 30+ días” (U13/U15)</li>
+                      <li>activar recordatorio + link de pago</li>
+                      <li>excepción para becas registradas</li>
+                    </ol>
+                  </div>
+                  <div class="bubble ai hint">
+                    Preguntame: asistencia, ingresos, retención, carga, lesiones.
                   </div>
                 </div>
                 <div class="phone-tabbar">
@@ -164,209 +175,115 @@
         </div>
       </section>
 
-      <section class="section" id="deportes">
+      <section class="section" id="fuentes">
         <div class="container">
           <div class="section-head wide">
-            <h2>Diseñado para clubes de todos los deportes</h2>
+            <h2>1) Identificamos tus fuentes de datos (sin cambiar tu operación)</h2>
             <p>
-              Adaptable a equipos, ligas y academias. Lo importante es tu operación: la
-              plataforma se ajusta a tu forma de trabajar.
+              Conectamos los sistemas que ya usás. Tu equipo sigue trabajando igual: el
+              cambio está en la calidad de las decisiones.
             </p>
           </div>
 
-          <div class="sport-row" aria-label="Deportes">
-            <a class="sport-card" href="#demo" style="--img: url('/assets/sport-futbol.svg')">
-              <span class="sport-label">Fútbol</span>
-              <span class="sport-underline" aria-hidden="true"></span>
-            </a>
-            <a
-              class="sport-card"
-              href="#demo"
-              style="--img: url('/assets/sport-baloncesto.svg')"
-            >
-              <span class="sport-label">Baloncesto</span>
-              <span class="sport-underline" aria-hidden="true"></span>
-            </a>
-            <a
-              class="sport-card"
-              href="#demo"
-              style="--img: url('/assets/sport-voleibol.svg')"
-            >
-              <span class="sport-label">Voleibol</span>
-              <span class="sport-underline" aria-hidden="true"></span>
-            </a>
-            <a class="sport-card" href="#demo" style="--img: url('/assets/sport-hockey.svg')">
-              <span class="sport-label">Hockey</span>
-              <span class="sport-underline" aria-hidden="true"></span>
-            </a>
-            <a class="sport-card more" href="#demo">
-              <span class="sport-more">Y muchos más…</span>
-            </a>
+          <div class="connector-grid" aria-label="Fuentes de datos (ilustrativas)">
+            <div class="connector">
+              <div class="connector-top">
+                <span class="connector-dot blue"></span><span>Pagos</span>
+              </div>
+              <p>Stripe / Mercado Pago / transferencias / caja</p>
+            </div>
+            <div class="connector">
+              <div class="connector-top">
+                <span class="connector-dot yellow"></span><span>Planillas</span>
+              </div>
+              <p>Excel / Google Sheets / CSV</p>
+            </div>
+            <div class="connector">
+              <div class="connector-top">
+                <span class="connector-dot green"></span><span>Asistencia</span>
+              </div>
+              <p>Entrenos, partidos, confirmaciones, disponibilidad</p>
+            </div>
+            <div class="connector">
+              <div class="connector-top">
+                <span class="connector-dot purple"></span><span>Deportivo</span>
+              </div>
+              <p>Sesiones, carga, objetivos, GPS, RPE</p>
+            </div>
+            <div class="connector">
+              <div class="connector-top">
+                <span class="connector-dot blue"></span><span>CRM</span>
+              </div>
+              <p>Leads, pruebas, altas/bajas, motivos</p>
+            </div>
+            <div class="connector">
+              <div class="connector-top">
+                <span class="connector-dot yellow"></span><span>Tickets</span>
+              </div>
+              <p>Eventos, campus, inscripciones</p>
+            </div>
+            <div class="connector">
+              <div class="connector-top">
+                <span class="connector-dot green"></span><span>Web</span>
+              </div>
+              <p>Formularios, contenidos, campañas</p>
+            </div>
+            <div class="connector">
+              <div class="connector-top">
+                <span class="connector-dot purple"></span><span>Staff</span>
+              </div>
+              <p>Horarios, disponibilidad, tareas</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="section" id="caracteristicas">
+      <section class="section" id="centralizacion">
         <div class="container">
-          <div class="split feature-split">
-            <div class="split-copy">
-              <h2>Gestioná y desarrollá todo el club en un solo lugar</h2>
-              <p>
-                Reducí fricción en el día a día: programación, comunicación, registros y
-                coordinación con familias y jugadores, todo en una interfaz simple.
-              </p>
-              <ul class="checks">
-                <li>Web moderna + app para afiliados</li>
-                <li>Registro rápido y sencillo</li>
-                <li>Notificaciones, calendarios y más</li>
-              </ul>
-            </div>
-            <div class="split-panel">
-              <div class="mockups">
-                <div class="mock social">
-                  <div class="mock-bar">Comunicación</div>
-                  <div class="mock-body">
-                    <div class="post-head">
-                      <span class="mini-avatar"></span>
-                      <span class="post-name">John Everson</span>
-                      <span class="post-time">hace 3 horas</span>
-                    </div>
-                    <div class="post-body">
-                      Hola equipo, ¡preparémonos para el partido! Detalles en el calendario
-                      de eventos.
-                    </div>
-                    <div class="event small">
-                      <div class="event-date">18</div>
-                      <div class="event-meta">
-                        <div class="event-team">Águilas FC</div>
-                        <div class="event-sub">Sábado · 12:00 · En casa</div>
-                      </div>
-                      <div class="event-pill">Partido</div>
-                    </div>
-                  </div>
-                  <div class="mock-foot">
-                    <span>👍 Como</span><span>💬 Comentario</span>
-                  </div>
-                </div>
-                <div class="mock small float">
-                  <div class="mock-bar">Informe de asistencia</div>
-                  <div class="mock-body compact">
-                    <div class="status ok"><span>✔</span><span>98% de asistencia</span></div>
-                    <div class="status bad"><span>✖</span><span>El 2% no asistió</span></div>
-                  </div>
-                </div>
-                <div class="mock banner">
-                  <div class="mock-body compact">
-                    <div class="banner-left"></div>
-                    <div class="banner-text">
-                      <div class="banner-title">Bienvenido a</div>
-                      <div class="banner-club">Club FC</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="section-head wide">
+            <h2>2) Centralizamos los datos para que “hablen el mismo idioma”</h2>
+            <p>
+              Normalizamos nombres, unificamos IDs, definimos métricas y dejamos trazabilidad
+              para que el club confíe en los números.
+            </p>
           </div>
 
-          <div class="split feature-split reverse" id="reseñas">
+          <div class="split process-split">
             <div class="split-copy">
-              <h2>Controlá toda la actividad económica del club</h2>
-              <p>
-                Automatizá tareas repetitivas, mantené visibilidad financiera y reducí
-                impagos con flujos claros y recordatorios.
-              </p>
+              <h3 class="subhead">Lo que centralizamos</h3>
               <ul class="checks">
-                <li>Visión financiera clara, siempre a tu alcance</li>
-                <li>Seguimiento de cobranzas y vencimientos</li>
-                <li>Oportunidades de sponsors y comunidad</li>
+                <li>Socios, pagos, deuda, becas y planes</li>
+                <li>Equipos, categorías, staff y roles</li>
+                <li>Asistencia, disponibilidad y carga</li>
+                <li>Leads, pruebas y conversiones</li>
               </ul>
-            </div>
-            <div class="split-panel">
-              <div class="mockups finance">
-                <div class="photo-card" style="--img: url('/assets/photo-teamwork.svg')"></div>
-                <div class="mock small float left">
-                  <div class="mock-bar">Pagos</div>
-                  <div class="mock-body">
-                    <div class="kpi-title">Volumen de ventas</div>
-                    <div class="kpi-value">€ 198 000</div>
-                    <div class="kpi-chart"></div>
-                  </div>
-                </div>
-                <div class="mock small float right">
-                  <div class="mock-bar">Registros</div>
-                  <div class="mock-body">
-                    <div class="kpi-title">Campamento 2026</div>
-                    <div class="kpi-value small">392 inscriptos</div>
-                    <div class="mini-list">
-                      <div class="mini-row">
-                        <span class="mini-avatar"></span><span class="mini-name"></span>
-                        <span class="mini-pill ok">Pagado</span>
-                      </div>
-                      <div class="mini-row">
-                        <span class="mini-avatar"></span><span class="mini-name"></span>
-                        <span class="mini-pill ok">Pagado</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="mock mini action">
-                  <div class="mock-bar">Requiere acción</div>
-                  <div class="mock-body compact">
-                    <div class="status bad"><span>✖</span><span>4 vencidos</span></div>
-                    <div class="status warn"><span>!</span><span>2 incobrables</span></div>
-                  </div>
-                </div>
+
+              <div class="mini-note">
+                Sin “magia”: un modelo de datos claro + reglas del club (qué cuenta como
+                asistencia, cómo se calcula morosidad, etc.).
               </div>
             </div>
-          </div>
 
-          <div class="split feature-split" id="recursos">
-            <div class="split-copy">
-              <h2>Desarrollá a tus atletas y jugadores</h2>
-              <p>
-                Herramientas para entrenadores y equipos: sesiones, seguimiento y objetivos.
-                Todo conectado para sostener el progreso.
-              </p>
-              <ul class="checks">
-                <li>Planes individuales para cada jugador</li>
-                <li>Biblioteca de contenidos y metodología</li>
-                <li>Estadísticas y análisis para mejorar</li>
-              </ul>
-            </div>
             <div class="split-panel">
-              <div class="mockups dev">
-                <div class="photo-card" style="--img: url('/assets/photo-field.svg')"></div>
-                <div class="mock medium">
-                  <div class="mock-bar">Sesiones de formación</div>
-                  <div class="mock-body">
-                    <div class="kpi-title">Lunes · Entrenamiento del equipo</div>
-                    <div class="tag-row">
-                      <span class="tag">Posesión</span><span class="tag">Ataque</span
-                      ><span class="tag">Pases</span><span class="tag">1v1</span>
-                    </div>
-                    <div class="pitch"></div>
-                  </div>
+              <div class="pipeline" aria-label="Pipeline de datos (ilustrativo)">
+                <div class="pipe-card">
+                  <div class="pipe-title">1. Conectores</div>
+                  <div class="pipe-text">Traemos datos de tus sistemas actuales.</div>
                 </div>
-                <div class="mock small float right">
-                  <div class="mock-bar">Fijación de objetivos</div>
-                  <div class="mock-body compact">
-                    <div class="status ok"><span>✔</span><span>5 partidos limpios</span></div>
-                    <div class="status ok dim">
-                      <span>✔</span><span>Mejorar pase con izquierda</span>
-                    </div>
-                    <div class="status ok dim">
-                      <span>✔</span><span>Completar 30 flexiones seguidas</span>
-                    </div>
-                  </div>
+                <div class="pipe-arrow" aria-hidden="true">→</div>
+                <div class="pipe-card">
+                  <div class="pipe-title">2. Almacén</div>
+                  <div class="pipe-text">Centralizamos en un repositorio único.</div>
                 </div>
-                <div class="mock medium float bottom">
-                  <div class="mock-bar">Tensión física</div>
-                  <div class="mock-body compact">
-                    <div class="kpi-title">Promedio del equipo: <strong>Alto</strong></div>
-                    <div class="slider" aria-hidden="true">
-                      <span class="fill"></span><span class="thumb"></span>
-                    </div>
-                  </div>
+                <div class="pipe-arrow" aria-hidden="true">→</div>
+                <div class="pipe-card">
+                  <div class="pipe-title">3. Métricas</div>
+                  <div class="pipe-text">Definimos KPIs consistentes y auditables.</div>
+                </div>
+                <div class="pipe-arrow" aria-hidden="true">→</div>
+                <div class="pipe-card highlight">
+                  <div class="pipe-title">4. Experto AI</div>
+                  <div class="pipe-text">Chat que explica el “por qué” y el “qué hacer”.</div>
                 </div>
               </div>
             </div>
@@ -374,112 +291,120 @@
         </div>
       </section>
 
-      <section class="section" id="precios">
+      <section class="section alt" id="experto">
         <div class="container">
           <div class="section-head wide">
-            <h2>Software deportivo todo en uno</h2>
+            <h2>3) Un experto de dominio con IA (en una UI de chat)</h2>
             <p>
-              Elegí módulos según tu necesidad: administración, comunicación y desarrollo
-              deportivo, con una experiencia unificada.
+              No es “un chatbot genérico”. Es un experto del club: entiende categorías,
+              finanzas, asistencia, carga y comunicación. Responde con números, contexto y
+              una lista corta de acciones.
             </p>
           </div>
 
-          <div class="two-col">
-            <div class="module-col">
-              <h3 class="col-title">Gestión de clubes</h3>
-              <div class="module-card">
-                <div class="module-icon dark">
-                  <img src="/assets/icon-payments.svg" alt="" width="22" height="22" />
-                </div>
-                <div>
-                  <div class="module-title">Pagos y registros</div>
-                  <div class="module-text">
-                    Automatizá facturas y cobros; membresías y suscripciones sin fricción.
-                  </div>
-                </div>
+          <div class="chat-grid">
+            <div class="chat-side">
+              <div class="offer-card">
+                <h3>Lo que obtenés</h3>
+                <ul class="offer-list">
+                  <li><strong>Respuesta inmediata</strong> con KPIs y comparativos.</li>
+                  <li><strong>Diagnóstico</strong>: qué cambió, dónde y por qué.</li>
+                  <li><strong>Acciones</strong>: 3 próximos pasos priorizados.</li>
+                  <li><strong>Transparencia</strong>: de qué datos sale cada conclusión.</li>
+                </ul>
               </div>
-              <div class="module-card">
-                <div class="module-icon dark">
-                  <img src="/assets/icon-comms.svg" alt="" width="22" height="22" />
-                </div>
-                <div>
-                  <div class="module-title">Comunicación</div>
-                  <div class="module-text">
-                    Mensajería segmentada, notificaciones y presencia digital del club.
-                  </div>
-                </div>
-              </div>
-              <div class="module-card">
-                <div class="module-icon dark">
-                  <img src="/assets/icon-calendar.svg" alt="" width="22" height="22" />
-                </div>
-                <div>
-                  <div class="module-title">Planificación</div>
-                  <div class="module-text">
-                    Eventos, invitaciones y asistencia en un solo calendario.
-                  </div>
-                </div>
-              </div>
-              <div class="module-card">
-                <div class="module-icon dark">
-                  <img src="/assets/icon-web.svg" alt="" width="22" height="22" />
-                </div>
-                <div>
-                  <div class="module-title">Websites</div>
-                  <div class="module-text">
-                    Un sitio moderno para tu club, con estructura y contenido ordenado.
-                  </div>
+
+              <div class="prompt-card">
+                <h3>Probá prompts típicos</h3>
+                <div class="prompt-row" role="list">
+                  <button class="prompt" type="button" role="listitem" data-prompt="Dame un resumen semanal con 3 acciones para dirección deportiva.">
+                    Resumen semanal
+                  </button>
+                  <button class="prompt" type="button" role="listitem" data-prompt="¿Qué categorías tienen mayor morosidad y qué harías hoy?">
+                    Morosidad por categoría
+                  </button>
+                  <button class="prompt" type="button" role="listitem" data-prompt="¿Qué está pasando con la asistencia en las últimas 4 semanas?">
+                    Asistencia 4 semanas
+                  </button>
+                  <button class="prompt" type="button" role="listitem" data-prompt="Detectá riesgos de carga/lesiones y recomendá ajustes para la semana.">
+                    Riesgo de carga
+                  </button>
                 </div>
               </div>
             </div>
 
-            <div class="module-col">
-              <h3 class="col-title">Desarrollo deportivo</h3>
-              <div class="module-card">
-                <div class="module-icon yellow">
-                  <img src="/assets/icon-training.svg" alt="" width="22" height="22" />
+            <section class="chat" aria-label="Demo del experto AI (ilustrativo)">
+              <header class="chat-head">
+                <div class="chat-title">
+                  <span class="chat-badge">Club FC</span>
+                  <span>Experto AI</span>
                 </div>
-                <div>
-                  <div class="module-title">Entrenamiento y planificación</div>
-                  <div class="module-text">
-                    Sesiones, ejercicios y contenidos compartidos con todo el staff.
-                  </div>
-                </div>
-              </div>
-              <div class="module-card">
-                <div class="module-icon yellow">
-                  <img src="/assets/icon-video.svg" alt="" width="22" height="22" />
-                </div>
-                <div>
-                  <div class="module-title">Video</div>
-                  <div class="module-text">
-                    Análisis simple y estadísticas para mejorar la toma de decisiones.
-                  </div>
-                </div>
-              </div>
-              <div class="module-card">
-                <div class="module-icon yellow">
-                  <img src="/assets/icon-stats.svg" alt="" width="22" height="22" />
-                </div>
-                <div>
-                  <div class="module-title">Estadísticas</div>
-                  <div class="module-text">
-                    Datos por jugador y equipo para seguir progreso y rendimiento.
-                  </div>
-                </div>
-              </div>
-              <div class="module-card">
-                <div class="module-icon yellow">
-                  <img src="/assets/icon-player.svg" alt="" width="22" height="22" />
-                </div>
-                <div>
-                  <div class="module-title">Desarrollo del jugador</div>
-                  <div class="module-text">
-                    Evaluaciones, objetivos y seguimiento continuo, con planes individuales.
-                  </div>
-                </div>
-              </div>
+                <div class="chat-meta">Datos demo · sin conexión real</div>
+              </header>
+
+              <div class="chat-body" id="chat-body" role="log" aria-live="polite"></div>
+
+              <form class="chat-form" id="chat-form">
+                <label class="sr-only" for="chat-input">Escribí tu pregunta</label>
+                <input
+                  id="chat-input"
+                  name="q"
+                  type="text"
+                  inputmode="text"
+                  autocomplete="off"
+                  placeholder="Preguntá por ingresos, morosidad, asistencia, retención…"
+                  required
+                />
+                <button class="btn btn-yellow" type="submit">Enviar</button>
+              </form>
+              <footer class="chat-foot">
+                <span>Tip: pedí “acciones”, “segmentación” o “comparativo”.</span>
+              </footer>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="implementacion">
+        <div class="container">
+          <div class="section-head wide">
+            <h2>Implementación simple: 4 semanas para ver valor</h2>
+            <p>
+              La velocidad viene de un método repetible (Hormozi style): reducimos el
+              “time-to-value” y aumentamos la certeza con entregables concretos.
+            </p>
+          </div>
+
+          <div class="timeline" aria-label="Plan de 4 semanas">
+            <div class="t-step">
+              <div class="t-num">Semana 1</div>
+              <div class="t-title">Mapa de sistemas + conectores</div>
+              <div class="t-text">Relevamos fuentes y conectamos lo mínimo viable.</div>
             </div>
+            <div class="t-step">
+              <div class="t-num">Semana 2</div>
+              <div class="t-title">Modelo de datos del club</div>
+              <div class="t-text">Entidades, reglas y KPIs acordados con tu equipo.</div>
+            </div>
+            <div class="t-step">
+              <div class="t-num">Semana 3</div>
+              <div class="t-title">Dashboards + alertas</div>
+              <div class="t-text">KPIs y “early warnings” por categoría/equipo.</div>
+            </div>
+            <div class="t-step">
+              <div class="t-num">Semana 4</div>
+              <div class="t-title">Experto AI + playbooks</div>
+              <div class="t-text">Chat con recomendaciones y explicación trazable.</div>
+            </div>
+          </div>
+
+          <div class="guarantee">
+            <h3>Garantía de valor (ejemplo)</h3>
+            <p>
+              Si en 30 días no obtenés al menos <strong>6 insights accionables</strong> y
+              un tablero de KPIs acordado, extendemos la implementación sin costo hasta
+              lograrlo.
+            </p>
           </div>
         </div>
       </section>
@@ -494,66 +419,65 @@
                 ><span class="avatar-pill"></span><span class="avatar-pill"></span
                 ><span class="avatar-pill"></span>
               </div>
-              <h2>Hablá con un experto en gestión deportiva</h2>
+              <h2>¿Querés que el experto AI aprenda tu club?</h2>
               <p class="expert-sub">
-                Te mostramos cómo quedaría el flujo ideal para tu club (roles, categorías,
-                pagos y comunicación).
+                En 30 minutos relevamos tus fuentes, definimos 3 KPIs críticos y te
+                proponemos un plan de centralización + experto AI.
               </p>
               <div class="cta-row">
                 <a class="btn btn-yellow" href="#demo">
-                  Contactá con ventas <span class="btn-icon" aria-hidden="true">→</span>
+                  Reservá una demo <span class="btn-icon" aria-hidden="true">→</span>
                 </a>
-                <a class="btn btn-outline" href="#precios">
-                  Descubrí los precios <span class="btn-icon" aria-hidden="true">→</span>
+                <a class="btn btn-outline" href="#fuentes">
+                  Ver fuentes típicas <span class="btn-icon" aria-hidden="true">→</span>
                 </a>
               </div>
               <p class="disclaimer">
-                *Precios ilustrativos. Ajustamos según ubicación, equipos, usuarios y
-                necesidades.
+                *Demo con datos reales opcional: se puede hacer con un CSV exportado.
               </p>
             </div>
 
             <div class="faq-grid" id="faq" role="list">
               <details class="faq-item" role="listitem">
-                <summary>¿Sirve para mi deporte?</summary>
+                <summary>¿Qué datos necesitan para empezar?</summary>
                 <div class="faq-body">
-                  Sí: trabajamos por estructura (equipos, roles, calendarios y finanzas),
-                  no por un deporte específico.
+                  Con 1–2 fuentes ya hay valor (p. ej. pagos + asistencia). Luego sumamos
+                  deportivo, CRM y registros.
                 </div>
               </details>
               <details class="faq-item" role="listitem">
-                <summary>¿Cuánto tardamos en implementarlo?</summary>
+                <summary>¿Cuánto tardamos en ver insights?</summary>
                 <div class="faq-body">
-                  Depende de la migración. Con CSV/Excel podés arrancar rápido y luego
-                  optimizar procesos.
+                  Primeros insights en ~14 días con fuentes mínimas. Implementación completa
+                  (modelo + experto) en 4 semanas.
                 </div>
               </details>
               <details class="faq-item" role="listitem">
-                <summary>¿Qué idiomas están disponibles?</summary>
+                <summary>¿Cómo se garantiza la calidad del dato?</summary>
                 <div class="faq-body">
-                  Podés configurar idioma por usuario. También adaptamos textos y
-                  notificaciones del club.
+                  Definimos métricas con el club, validamos con “checks” y dejamos
+                  trazabilidad (qué fuente, qué regla, qué período).
                 </div>
               </details>
               <details class="faq-item" role="listitem">
-                <summary>Ya tenemos sistema, ¿es difícil cambiar?</summary>
+                <summary>¿Hay que cambiar de sistema?</summary>
                 <div class="faq-body">
-                  No: importaciones, acompañamiento y convivencia por etapas para evitar
-                  fricción.
+                  No. Conectamos lo que ya usás. Si más adelante querés consolidar, se hace
+                  por etapas.
                 </div>
               </details>
               <details class="faq-item" role="listitem">
-                <summary>¿Qué plan me conviene?</summary>
+                <summary>¿El experto AI “se inventa” cosas?</summary>
                 <div class="faq-body">
-                  Arrancá con lo esencial (comunicación + calendario) y sumá finanzas o
-                  desarrollo deportivo a medida que crece el club.
+                  No: responde con datos y explica supuestos. Cuando falta información, lo
+                  declara y propone qué medir.
                 </div>
               </details>
               <details class="faq-item" role="listitem">
-                <summary>¿Cuál es la mejor manera de empezar?</summary>
+                <summary>¿Cómo empiezo ya?</summary>
                 <div class="faq-body">
-                  Una demo breve, definición de roles y migración mínima (equipos y
-                  calendario) para generar valor desde la semana 1.
+                  Exportá un CSV de pagos y asistencia (últimos 90 días) y armamos una demo
+                  en base a tus números.
                 </div>
               </details>
             </div>
@@ -570,21 +494,23 @@
             <span>Fútbol ERP</span>
           </a>
           <p class="muted-text">
-            Software de gestión para clubes. Construido para crecer con tu proyecto.
+            Centralización de datos + experto AI para mejores decisiones del club.
           </p>
         </div>
 
         <div class="footer-cols">
           <div class="footer-col">
             <h3>Producto</h3>
-            <a href="#caracteristicas">Características</a>
-            <a href="#precios">Precios</a>
+            <a href="#fuentes">Fuentes</a>
+            <a href="#centralizacion">Centralización</a>
+            <a href="#experto">Experto AI</a>
+            <a href="#implementacion">Implementación</a>
             <a href="#demo">Demo</a>
           </div>
           <div class="footer-col">
             <h3>Recursos</h3>
             <a href="#faq">Preguntas</a>
-            <a href="#caracteristicas">Cómo funciona</a>
+            <a href="#implementacion">Plan de 4 semanas</a>
             <a href="#top">Volver arriba</a>
           </div>
           <div class="footer-col">
