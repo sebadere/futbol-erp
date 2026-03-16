@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexus Sports — Dashboard Gerencial 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#e8eaed;
+  --surface:#ffffff;
+  --surface2:#f4f6f8;
+  --surface3:#eef1f4;
+  --border:#dde3e9;
+  --border2:#c6cfd8;
+  --text:#141e2a;
+  --text2:#344556;
+  --muted:#6a8299;
+  --muted2:#a8bcc8;
+  --navy:#0a1f38;
+  --navy2:#102a4a;
+  --blue:#1856a0;
+  --blue-mid:#2474cc;
+  --blue-light:#4e98de;
+  --blue-pale:#e4f0fb;
+  --blue-faint:#f0f6fd;
+  --red:#b83226;
+  --red-bg:#fdf0ef;
+  --red-b:#eebdb8;
+  --amber:#c47808;
+  --amber-bg:#fef7e6;
+  --amber-b:#ecd88a;
+  --green:#166832;
+  --green-bg:#ecf7f0;
+  --green-b:#a0d4b4;
+  --c1:#1856a0;--c2:#2474cc;--c3:#4e98de;--c4:#84bcec;--c5:#b8d8f6;
+  --r:6px;
+  --sh:0 1px 4px rgba(10,31,56,.09),0 0 0 1px var(--border);
+  --sh2:0 4px 14px rgba(10,31,56,.13),0 0 0 1px var(--border2);
+}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.45;}
+
+/* ═══════════════ TOPBAR ═══════════════ */
+.tb{
+  height:58px;display:flex;align-items:stretch;
+  position:sticky;top:0;z-index:200;
+  box-shadow:0 2px 10px rgba(0,0,0,.25);
+}
+.tb-brand{
+  display:flex;align-items:center;
+  background:linear-gradient(135deg, #081830 0%, #0e2a4a 50%, #0f3060 100%);
+  padding:0 22px 0 18px;
+  position:relative;
+  overflow:hidden;
+  min-width:200px;
+  border-right:1px solid rgba(255,255,255,.1);
+  flex-shrink:0;
+}
+/* Geometric pitch lines decoration */
+.tb-brand::before{
+  content:'';
+  position:absolute;
+  right:-10px;top:50%;transform:translateY(-50%);
+  width:60px;height:60px;
+  border:2px solid rgba(255,255,255,.06);
+  border-radius:50%;
+}
+.tb-brand::after{
+  content:'';
+  position:absolute;
+  right:8px;top:50%;transform:translateY(-50%);
+  width:28px;height:28px;
+  border:2px solid rgba(255,255,255,.04);
+  border-radius:50%;
+}
+.brand-inner{display:flex;align-items:center;gap:11px;position:relative;z-index:1;}
+.brand-emblem{
+  width:34px;height:34px;
+  background:linear-gradient(145deg, #2474cc, #1856a0);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+  box-shadow:0 2px 8px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.15);
+  flex-shrink:0;
+}
+.brand-text{}
+.brand-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:20px;
+  color:#ffffff;letter-spacing:.5px;line-height:1;
+  text-shadow:0 1px 3px rgba(0,0,0,.3);
+}
+.brand-name em{color:#5ab0f0;font-style:normal;}
+.brand-tag{
+  font-family:'DM Mono',monospace;font-size:8px;
+  color:rgba(255,255,255,.35);letter-spacing:2.5px;
+  text-transform:uppercase;margin-top:3px;
+}
+/* Diagonal clip on right edge */
+.tb-body{
+  flex:1;
+  background:var(--navy2);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px 0 20px;
+}
+.tb-page-info{display:flex;align-items:center;gap:14px;}
+.tb-page-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:15px;color:#ffffff;letter-spacing:.3px;
+}
+.tb-divider{width:1px;height:18px;background:rgba(255,255,255,.15);}
+.tb-club{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:13px;color:rgba(255,255,255,.5);letter-spacing:.2px;
+}
+.tb-right{display:flex;align-items:center;gap:12px;}
+.tb-period{
+  display:flex;align-items:center;gap:2px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:4px;overflow:hidden;
+}
+.tb-per-btn{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;
+  padding:4px 10px;color:rgba(255,255,255,.45);cursor:pointer;
+  transition:all .15s;
+}
+.tb-per-btn.on{background:var(--blue-mid);color:#fff;}
+.live-chip{
+  display:flex;align-items:center;gap:5px;
+  background:rgba(22,104,50,.35);
+  border:1px solid rgba(22,104,50,.6);
+  border-radius:20px;padding:3px 10px;
+}
+.ld{width:6px;height:6px;background:#3ed870;border-radius:50%;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+.live-chip span{font-family:'DM Mono',monospace;font-size:9px;color:#3ed870;letter-spacing:1px;}
+.tb-date{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.4px;}
+.notif-btn{
+  width:28px;height:28px;border-radius:4px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;cursor:pointer;position:relative;
+}
+.notif-pip{position:absolute;top:4px;right:4px;width:5px;height:5px;background:#e04030;border-radius:50%;border:1px solid var(--navy2);}
+
+/* ═══════════════ LAYOUT ═══════════════ */
+.wrap{display:flex;min-height:calc(100vh - 58px);}
+
+/* SIDE LABELS */
+.labels{
+  width:200px;flex-shrink:0;
+  background:var(--navy);
+  display:flex;flex-direction:column;
+}
+.lbl{
+  display:flex;align-items:center;justify-content:center;
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:12px;letter-spacing:3.5px;
+  text-transform:uppercase;color:rgba(255,255,255,.7);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  user-select:none;flex-shrink:0;
+  transition:background .2s;
+}
+.lbl:hover{color:rgba(255,255,255,.95);}
+.lbl:last-child{border-bottom:none;flex:1;}
+/* Heights set via JS to match section heights */
+
+/* CONTENT */
+.cnt{flex:1;padding:12px 14px;display:flex;flex-direction:column;gap:10px;min-width:0;overflow-x:hidden;}
+
+/* ═══════════════ ALERT BAR ═══════════════ */
+.abar{
+  display:flex;align-items:center;gap:9px;
+  background:var(--amber-bg);
+  border:1px solid var(--amber-b);
+  border-left:4px solid var(--amber);
+  border-radius:var(--r);padding:7px 13px;
+}
+.abar-t{flex:1;font-size:12px;color:#5e3a06;line-height:1.4;}
+.abar-t strong{font-weight:700;color:var(--amber);}
+.abtn{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.4px;
+  padding:5px 11px;border-radius:3px;cursor:pointer;border:none;
+}
+.abtn.p{background:var(--amber);color:#fff;}
+.abtn.g{background:transparent;border:1px solid var(--amber-b);color:var(--amber);}
+
+/* ═══════════════ KPI STRIP ═══════════════ */
+.kpi-row{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;}
+.kpi{
+  background:var(--surface);border-radius:var(--r);
+  box-shadow:var(--sh);padding:12px 14px;
+  position:relative;overflow:hidden;
+  transition:box-shadow .18s;
+}
+.kpi:hover{box-shadow:var(--sh2);}
+.kpi-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
+.kpi-lbl{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;line-height:1.3;}
+.kpi-ico{font-size:16px;line-height:1;}
+.kpi-val{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:26px;line-height:1;
+  color:var(--text);margin-bottom:5px;
+}
+.kpi-footer{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.kpi-d{
+  display:inline-flex;align-items:center;gap:2px;
+  font-family:'DM Mono',monospace;font-size:10px;font-weight:500;
+  padding:2px 5px;border-radius:3px;
+}
+.kpi-d.up{background:var(--green-bg);color:var(--green);}
+.kpi-d.dn{background:var(--red-bg);color:var(--red);}
+.kpi-d.fl{background:var(--blue-faint);color:var(--blue-mid);}
+.kpi-d.wn{background:var(--amber-bg);color:var(--amber);}
+.kpi-sub{font-size:10px;color:var(--muted2);}
+.kpi-bar{position:absolute;bottom:0;left:0;right:0;height:3px;}
+
+/* ═══════════════ SECTION ROWS ═══════════════ */
+.sr{display:grid;gap:9px;}
+
+/* SECTION 1 – FINANZAS (priority #1 – largest) */
+.r-fin{grid-template-columns:2.2fr 1fr;}
+
+/* SECTION 2 – SOCIOS */
+.r-soc{grid-template-columns:1.1fr 1fr 1fr;}
+
+/* SECTION 3 – PLANTEL */
+.r-plan{grid-template-columns:1.3fr 1fr;}
+
+/* SECTION 4 – SPONSORS + ENGAGEMENT */
+.r-sp{grid-template-columns:1.4fr 1fr;}
+
+/* ═══════════════ CARD ═══════════════ */
+.card{
+  background:var(--surface);border-radius:var(--r);
+  box-shadow:var(--sh);overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:box-shadow .18s;
+}
+.card:hover{box-shadow:var(--sh2);}
+.ch{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:9px 13px;border-bottom:1px solid var(--border);
+  background:var(--surface2);flex-shrink:0;
+}
+.ch-l{display:flex;align-items:center;gap:7px;}
+.ch-ico{
+  width:26px;height:26px;border-radius:5px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;flex-shrink:0;
+}
+.ct{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.3px;text-transform:uppercase;color:var(--text);}
+.cs{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:.2px;margin-top:1px;}
+.cl{font-size:11px;color:var(--blue-mid);font-weight:600;cursor:pointer;}
+.cl:hover{color:var(--blue);}
+.cb{padding:12px 13px;flex:1;display:flex;flex-direction:column;gap:9px;}
+
+/* ═══════════════ TYPOGRAPHY HELPERS ═══════════════ */
+.bn{font-family:'Barlow Condensed',sans-serif;font-weight:800;line-height:.9;}
+.blbl{font-size:11px;color:var(--muted);padding-bottom:3px;font-weight:500;}
+.sl2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.dv{height:1px;background:var(--border);margin:4px 0;}
+
+/* ═══════════════ DELTA / BADGE ═══════════════ */
+.d{display:inline-flex;align-items:center;gap:2px;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;padding:2px 6px;border-radius:3px;}
+.d.up{background:var(--green-bg);color:var(--green);}
+.d.dn{background:var(--red-bg);color:var(--red);}
+.d.fl{background:var(--blue-faint);color:var(--blue-mid);}
+.d.wn{background:var(--amber-bg);color:var(--amber);}
+
+.bdg{display:inline-flex;align-items:center;gap:3px;font-family:'DM Mono',monospace;font-size:9px;padding:2px 7px;border-radius:3px;letter-spacing:.2px;font-weight:500;white-space:nowrap;}
+.bdg::before{content:'';width:5px;height:5px;border-radius:50%;}
+.bdg.red{background:var(--red-bg);color:var(--red);border:1px solid var(--red-b);}
+.bdg.red::before{background:var(--red);}
+.bdg.amb{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-b);}
+.bdg.amb::before{background:var(--amber);}
+.bdg.grn{background:var(--green-bg);color:var(--green);border:1px solid var(--green-b);}
+.bdg.grn::before{background:var(--green);}
+.bdg.blu{background:var(--blue-pale);color:var(--blue);border:1px solid #b8d4f0;}
+.bdg.blu::before{background:var(--blue-light);}
+
+/* ═══════════════ PROGRESS ═══════════════ */
+.pg{display:flex;flex-direction:column;gap:2px;}
+.pg-top{display:flex;justify-content:space-between;align-items:center;}
+.pg-l{font-size:11px;color:var(--muted);font-weight:500;display:flex;align-items:center;gap:5px;}
+.pg-v{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;}
+.pg-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:2px;}
+.pg-fill{height:100%;border-radius:3px;}
+
+/* ═══════════════ TABLE ROWS ═══════════════ */
+.tr{display:flex;align-items:center;gap:9px;padding:6px 0;border-bottom:1px solid var(--border);}
+.tr:last-child{border-bottom:none;}
+.tav{width:28px;height:28px;border-radius:50%;background:var(--blue-faint);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:9px;font-weight:500;color:var(--blue);flex-shrink:0;}
+.ti{flex:1;min-width:0;}
+.tn{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tm{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:.2px;margin-top:1px;}
+.trt{text-align:right;flex-shrink:0;}
+
+/* ═══════════════ STAT ROWS ═══════════════ */
+.row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px;}
+.row:last-child{border-bottom:none;}
+.rl{color:var(--muted);display:flex;align-items:center;gap:6px;}
+.rl::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--border2);flex-shrink:0;}
+.row.red .rl::before{background:var(--red);}
+.row.grn .rl::before{background:var(--green);}
+.row.blu .rl::before{background:var(--blue-mid);}
+.row.amb .rl::before{background:var(--amber);}
+.rr{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;}
+.row.red .rr{color:var(--red);}
+.row.grn .rr{color:var(--green);}
+.row.blu .rr{color:var(--blue);}
+.row.amb .rr{color:var(--amber);}
+
+/* ═══════════════ MINI STATS ═══════════════ */
+.mg{display:grid;gap:6px;}
+.mg2{grid-template-columns:1fr 1fr;}
+.mg3{grid-template-columns:repeat(3,1fr);}
+.mg4{grid-template-columns:repeat(4,1fr);}
+.mg5{grid-template-columns:repeat(5,1fr);}
+.ms{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:9px 11px;}
+.ms-val{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;line-height:1;color:var(--text);}
+.ms-lbl{font-size:10px;color:var(--muted);margin-top:2px;font-weight:600;text-transform:uppercase;letter-spacing:.3px;}
+.ms-d{font-family:'DM Mono',monospace;font-size:9px;margin-top:3px;}
+
+/* ═══════════════ LEGEND ═══════════════ */
+.lgd{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+.lgd-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted);}
+.lgd-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+.lgd-line{width:14px;height:2px;border-radius:1px;flex-shrink:0;}
+
+/* ═══════════════ ALERTAS ═══════════════ */
+.al{display:flex;align-items:flex-start;gap:8px;padding:7px 10px;border-radius:4px;margin-bottom:5px;}
+.al:last-child{margin-bottom:0;}
+.al.hi{background:var(--red-bg);border-left:3px solid var(--red);}
+.al.md{background:var(--amber-bg);border-left:3px solid var(--amber);}
+.al.lo{background:var(--blue-pale);border-left:3px solid var(--blue-light);}
+.al.ok{background:var(--green-bg);border-left:3px solid var(--green);}
+.ai{font-size:12px;margin-top:1px;flex-shrink:0;}
+.ab2{flex:1;}
+.at3{font-size:11px;font-weight:700;color:var(--text);line-height:1.3;}
+.ad2{font-size:10px;color:var(--muted);margin-top:1px;line-height:1.4;}
+.at4{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted2);flex-shrink:0;padding-top:1px;}
+
+/* ═══════════════ MATCH CHIP ═══════════════ */
+.mc{display:flex;align-items:center;justify-content:space-between;background:var(--blue-faint);border:1px solid #c0d8f0;border-radius:4px;padding:7px 10px;}
+.mc-t{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;color:var(--navy);display:flex;align-items:center;gap:8px;}
+.vs2{font-size:9px;color:var(--muted2);letter-spacing:2px;font-weight:400;}
+.mc-d{font-family:'DM Mono',monospace;font-size:9px;color:var(--blue);}
+
+/* ═══════════════ SPONSOR ═══════════════ */
+.sp-logo{width:32px;height:32px;border-radius:4px;background:var(--blue-faint);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:8px;font-weight:600;color:var(--blue);letter-spacing:1px;flex-shrink:0;}
+.sp-amt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;color:var(--navy);}
+
+/* ═══════════════ BRECHA BOX ═══════════════ */
+.brecha{display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:var(--red-bg);border:1px solid var(--red-b);border-radius:4px;}
+.brecha-l{font-size:11px;color:var(--red);font-weight:700;}
+.brecha-v{font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--red);}
+
+/* ═══════════════ CHART CONTAINER ═══════════════ */
+canvas{display:block;width:100%!important;}
+.chart-box{position:relative;width:100%;}
+
+/* ═══════════════ FOOTER ═══════════════ */
+.footer{text-align:center;padding:9px;font-family:'DM Mono',monospace;font-size:9px;color:var(--muted2);letter-spacing:1px;border-top:1px solid var(--border);background:var(--surface);}
+
+/* ═══════════════ ANIMATIONS ═══════════════ */
+@keyframes fu{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
+.kpi{animation:fu .3s ease both;}
+.kpi:nth-child(1){animation-delay:.03s;} .kpi:nth-child(2){animation-delay:.06s;}
+.kpi:nth-child(3){animation-delay:.09s;} .kpi:nth-child(4){animation-delay:.12s;}
+.kpi:nth-child(5){animation-delay:.15s;} .kpi:nth-child(6){animation-delay:.18s;}
+.card{animation:fu .35s ease both;animation-delay:.2s;}
+</style>
+</head>
+<body>
+
+<!-- ════════════════ TOPBAR ════════════════ -->
+<div class="tb">
+  <div class="tb-brand">
+    <div class="brand-inner">
+      <div class="brand-emblem">⚽</div>
+      <div class="brand-text">
+        <div class="brand-name">NEXUS <em>SPORTS</em></div>
+        <div class="brand-tag">ERP · Gestión de Clubes</div>
+      </div>
+    </div>
+  </div>
+  <div class="tb-body">
+    <div class="tb-page-info">
+      <div class="tb-page-title">Dashboard Gerencial</div>
+      <div class="tb-divider"></div>
+      <div class="tb-club">Club Atlético San Martín · Nacional B</div>
+    </div>
+    <div class="tb-right">
+      <div class="tb-period">
+        <div class="tb-per-btn">MES</div>
+        <div class="tb-per-btn on">AÑO</div>
+      </div>
+      <div class="live-chip"><div class="ld"></div><span>EN VIVO</span></div>
+      <div class="tb-date">DOM 08 MAR 2026 · 09:14</div>
+      <div class="notif-btn">🔔<div class="notif-pip"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<!-- SIDE LABELS (heights set by JS) -->
+<div class="labels" id="sideLabels">
+  <div class="lbl" id="lbl0" style="background:rgba(24,86,160,.45);">Finanzas</div>
+  <div class="lbl" id="lbl1" style="background:rgba(10,31,56,.55);">Socios</div>
+  <div class="lbl" id="lbl2" style="background:rgba(8,22,42,.6);">Plantel</div>
+  <div class="lbl" id="lbl3" style="background:rgba(14,30,52,.45);">Sponsors</div>
+</div>
+
+<!-- CONTENT -->
+<div class="cnt" id="mainContent">
+
+  <!-- ALERT BAR -->
+  <div class="abar">
+    <span style="font-size:15px;">⚠️</span>
+    <div class="abar-t">
+      <strong>Atención requerida hoy:</strong>
+      Contrato <strong>Rodríguez vence en 12 días</strong> sin oferta enviada &nbsp;·&nbsp;
+      Sponsor <strong>Movistar sin confirmar renovación</strong> ($3.1M, vence 26 mar) &nbsp;·&nbsp;
+      Brecha caja vs. sueldos: <strong>−$1.9M</strong>
+    </div>
+    <button class="abtn p">Revisar ahora</button>
+    <button class="abtn g">Descartar</button>
+  </div>
+
+  <!-- KPI STRIP -->
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi-top"><div class="kpi-lbl">Recaudación Anual</div><div class="kpi-ico">💵</div></div>
+      <div class="kpi-val" style="color:var(--blue)">$98.4M</div>
+      <div class="kpi-footer"><span class="kpi-d up">▲ +14%</span><span class="kpi-sub">vs. 2025</span></div>
+      <div class="kpi-bar" style="background:var(--blue-mid)"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-top"><div class="kpi-lbl">Socios Activos</div><div class="kpi-ico">👥</div></div>
+      <div class="kpi-val" style="color:var(--c1)">2.847</div>
+      <div class="kpi-footer"><span class="kpi-d up">▲ +3.2%</span><span class="kpi-sub">obj: 3.200</span></div>
+      <div class="kpi-bar" style="background:var(--c2)"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-top"><div class="kpi-lbl">Ingresos Sponsors</div><div class="kpi-ico">🤝</div></div>
+      <div class="kpi-val">$14.8M</div>
+      <div class="kpi-footer"><span class="kpi-d fl">— 7 contratos</span></div>
+      <div class="kpi-bar" style="background:var(--c3)"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-top"><div class="kpi-lbl">Morosidad</div><div class="kpi-ico">⚠️</div></div>
+      <div class="kpi-val" style="color:var(--red)">18.4%</div>
+      <div class="kpi-footer"><span class="kpi-d dn">▲ +1.2pts</span><span class="kpi-sub">523 socios</span></div>
+      <div class="kpi-bar" style="background:var(--red)"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-top"><div class="kpi-lbl">Resultado Neto</div><div class="kpi-ico">📈</div></div>
+      <div class="kpi-val" style="color:var(--green)">+$12.1M</div>
+      <div class="kpi-footer"><span class="kpi-d up">▲ positivo</span></div>
+      <div class="kpi-bar" style="background:var(--green)"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-top"><div class="kpi-lbl">Plantel Activo</div><div class="kpi-ico">⚽</div></div>
+      <div class="kpi-val">28</div>
+      <div class="kpi-footer"><span class="kpi-d wn">2 críticos</span><span class="kpi-sub">inf: 64</span></div>
+      <div class="kpi-bar" style="background:var(--amber)"></div>
+    </div>
+  </div>
+
+  <!-- ═══ SECCIÓN 1: FINANZAS (prioritaria) ═══ -->
+  <div class="sr r-fin" id="sec0">
+
+    <!-- EVOLUCIÓN FINANCIERA ANUAL -->
+    <div class="card">
+      <div class="ch">
+        <div class="ch-l">
+          <div class="ch-ico" style="background:var(--blue-faint);">📊</div>
+          <div><div class="ct">Evolución Financiera Anual</div><div class="cs">Enero–Diciembre 2025 vs. proyección 2026 · ARS</div></div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <div class="lgd" style="margin:0;gap:10px;">
+            <div class="lgd-item"><div class="lgd-dot" style="background:var(--c1);"></div>Ingresos 2026</div>
+            <div class="lgd-item"><div class="lgd-dot" style="background:var(--red);"></div>Egresos 2026</div>
+            <div class="lgd-item"><div class="lgd-line" style="background:var(--amber);border-top:2px solid var(--amber);"></div>Neto 2026</div>
+            <div class="lgd-item"><div class="lgd-dot" style="background:var(--c4);opacity:.7;"></div>Ingresos 2025</div>
+          </div>
+          <a class="cl">Ver completo →</a>
+        </div>
+      </div>
+      <div class="cb">
+        <div class="chart-box"><canvas id="finChart" height="180"></canvas></div>
+        <div class="dv"></div>
+        <div class="mg mg5">
+          <div class="ms">
+            <div class="ms-val" style="color:var(--green)">$98.4M</div>
+            <div class="ms-lbl">Ingresos anuales</div>
+            <div class="ms-d" style="color:var(--green)">▲ +14% vs 2025</div>
+          </div>
+          <div class="ms">
+            <div class="ms-val" style="color:var(--red)">$86.3M</div>
+            <div class="ms-lbl">Egresos anuales</div>
+            <div class="ms-d" style="color:var(--amber)">▲ +8% vs 2025</div>
+          </div>
+          <div class="ms">
+            <div class="ms-val" style="color:var(--blue)">+$12.1M</div>
+            <div class="ms-lbl">Resultado neto</div>
+            <div class="ms-d" style="color:var(--green)">▲ +62% vs 2025</div>
+          </div>
+          <div class="ms">
+            <div class="ms-val">$2.3M</div>
+            <div class="ms-lbl">Caja disponible</div>
+            <div class="ms-d" style="color:var(--red)">Brecha −$1.9M</div>
+          </div>
+          <div class="ms">
+            <div class="ms-val" style="color:var(--amber)">$4.2M</div>
+            <div class="ms-lbl">Sueldos pendientes</div>
+            <div class="ms-d" style="color:var(--amber)">⚠ A resolver</div>
+          </div>
+        </div>
+        <div class="dv"></div>
+        <div class="sl2">Proyección de caja — próximas 6 semanas</div>
+        <div class="chart-box"><canvas id="cajaLine" height="70"></canvas></div>
+        <div class="lgd" style="margin-top:4px;">
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--blue-mid);"></div>Caja proyectada</div>
+          <div class="lgd-item"><div class="lgd-line" style="background:var(--red);border-top:2px dashed var(--red);"></div>Mínimo operativo ($1.5M)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAJA + ALERTAS FINANCIERAS -->
+    <div class="card">
+      <div class="ch">
+        <div class="ch-l">
+          <div class="ch-ico" style="background:var(--amber-bg);">💰</div>
+          <div><div class="ct">Caja & Compromisos</div><div class="cs">Situación financiera crítica</div></div>
+        </div>
+        <span class="bdg amb">ATENCIÓN</span>
+      </div>
+      <div class="cb">
+        <div>
+          <div class="sl2">Caja disponible hoy</div>
+          <div style="display:flex;align-items:flex-end;gap:6px;margin-bottom:4px;">
+            <div class="bn" style="font-size:44px;color:var(--navy);">$2.3M</div>
+          </div>
+          <div style="display:flex;gap:6px;align-items:center;">
+            <span class="d dn">▼ −$0.8M</span><span style="font-size:11px;color:var(--muted)">vs. semana pasada</span>
+          </div>
+        </div>
+        <div class="dv"></div>
+        <div class="row red"><div class="rl">Sueldos plantel pendientes</div><div class="rr">−$4.2M</div></div>
+        <div class="row amb"><div class="rl">Deuda proveedores</div><div class="rr">−$1.1M</div></div>
+        <div class="row grn"><div class="rl">Cobros socios proyectados</div><div class="rr">+$3.8M</div></div>
+        <div class="row blu"><div class="rl">Sponsors — cobro 15 mar</div><div class="rr">+$1.4M</div></div>
+        <div class="row grn"><div class="rl">Ticketing próx. partido</div><div class="rr">+$0.6M</div></div>
+        <div class="dv"></div>
+        <div class="brecha"><div class="brecha-l">⚠ Brecha caja vs. sueldos</div><div class="brecha-v">−$1.9M</div></div>
+        <div class="dv"></div>
+        <div class="sl2">Composición de ingresos anuales</div>
+        <div class="chart-box"><canvas id="ingresosDonut" height="140"></canvas></div>
+        <div class="lgd" style="margin-top:4px;justify-content:center;">
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--c1);"></div>Cuotas socios 42%</div>
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--c3);"></div>Sponsors 15%</div>
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--c4);"></div>Ticketing 22%</div>
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--c5);"></div>Otros 21%</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ SECCIÓN 2: SOCIOS ═══ -->
+  <div class="sr r-soc" id="sec1">
+
+    <!-- SOCIOS RESUMEN -->
+    <div class="card">
+      <div class="ch">
+        <div class="ch-l">
+          <div class="ch-ico" style="background:var(--blue-faint);">👥</div>
+          <div><div class="ct">Gestión de Socios</div><div class="cs">Padrón anual 2026</div></div>
+        </div>
+        <a class="cl">Ver detalle →</a>
+      </div>
+      <div class="cb">
+        <div style="display:flex;align-items:flex-end;gap:10px;">
+          <div class="bn" style="font-size:58px;color:var(--blue);line-height:.85;">2.847</div>
+          <div style="padding-bottom:6px;">
+            <div style="font-size:11px;color:var(--muted);">socios activos</div>
+            <div style="display:flex;gap:5px;margin-top:4px;">
+              <span class="d up">▲ +91 este mes</span>
+            </div>
+          </div>
+        </div>
+        <div class="dv"></div>
+        <div class="sl2">Progreso hacia objetivo anual (3.200)</div>
+        <div class="pg">
+          <div class="pg-top"><span class="pg-l">2.847 inscriptos</span><span class="pg-v" style="color:var(--blue)">89%</span></div>
+          <div class="pg-bar"><div class="pg-fill" style="width:89%;background:var(--blue-mid)"></div></div>
+        </div>
+        <div class="dv"></div>
+        <div class="sl2">Evolución mensual de socios — 2026</div>
+        <div class="chart-box"><canvas id="socLine" height="90"></canvas></div>
+        <div class="lgd" style="margin-top:4px;">
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--c1);"></div>Socios activos 2026</div>
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--c4);opacity:.7;"></div>2025 (comparativo)</div>
+          <div class="lgd-item"><div class="lgd-line" style="background:var(--amber);border-top:2px dashed var(--amber);"></div>Objetivo 3.200</div>
+        </div>
+        <div class="dv"></div>
+        <div class="mg mg4">
+          <div class="ms"><div class="ms-val" style="color:var(--c1)">1.204</div><div class="ms-lbl">Pleno</div><div class="ms-d" style="color:var(--muted)">42%</div></div>
+          <div class="ms"><div class="ms-val" style="color:var(--c3)">1.128</div><div class="ms-lbl">Adherente</div><div class="ms-d" style="color:var(--muted)">40%</div></div>
+          <div class="ms"><div class="ms-val" style="color:var(--muted)">515</div><div class="ms-lbl">Jubilado</div><div class="ms-d" style="color:var(--muted)">18%</div></div>
+          <div class="ms"><div class="ms-val" style="color:var(--green)">+57</div><div class="ms-lbl">Balance neto</div><div class="ms-d" style="color:var(--green)">+91 −34</div></div>
+        </div>
+        <div class="dv"></div>
+        <div class="row blu"><div class="rl">Altas anuales acumuladas</div><div class="rr">+387</div></div>
+        <div class="row red"><div class="rl">Bajas anuales acumuladas</div><div class="rr">−142</div></div>
+      </div>
+    </div>
+
+    <!-- MOROSIDAD -->
+    <div class="card">
+      <div class="ch">
+        <div class="ch-l">
+          <div class="ch-ico" style="background:var(--red-bg);">⚠️</div>
+          <div><div class="ct">Morosidad</div><div class="cs">523 socios · 18.4% del padrón</div></div>
+        </div>
+        <div style="display:flex;gap:5px;align-items:center;"><span class="bdg red">ALERTA</span><a class="cl">Gestionar →</a></div>
+      </div>
+      <div class="cb">
+        <div style="display:flex;align-items:flex-end;gap:8px;">
+          <div class="bn" style="font-size:50px;color:var(--red);line-height:.85;">18.4</div>
+          <div style="padding-bottom:7px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;color:var(--red);">%</div>
+          <div style="padding-bottom:7px;"><span class="d dn">▲ +1.2pts</span><div style="font-size:10px;color:var(--muted);margin-top:3px;">vs. dic 2025</div></div>
+        </div>
+        <div class="dv"></div>
+        <div class="sl2">Por antigüedad de deuda</div>
+        <div class="chart-box"><canvas id="morBar" height="90"></canvas></div>
+        <div class="lgd" style="margin-top:4px;">
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--amber);"></div>1 mes (312)</div>
+          <div class="lgd-item"><div class="lgd-dot" style="background:#b85820;"></div>2–3 meses (141)</div>
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--red);"></div>+3 meses (70)</div>
+        </div>
+        <div class="dv"></div>
+        <div class="sl2">Evolución de morosidad mensual — 2026</div>
+        <div class="chart-box"><canvas id="morLine" height="80"></canvas></div>
+        <div class="lgd" style="margin-top:4px;">
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--red);"></div>% Morosos</div>
+          <div class="lgd-item"><div class="lgd-line" style="background:var(--amber);border-top:2px dashed var(--amber);"></div>Umbral crítico (20%)</div>
+        </div>
+        <div class="dv"></div>
+        <div class="row red"><div class="rl">Deuda total acumulada</div><div class="rr">$2.4M</div></div>
+        <div class="row amb"><div class="rl">Deuda recuperable (≤2m)</div><div class="rr">$1.9M</div></div>
+        <div class="row grn"><div class="rl">Socios regularizados (año)</div><div class="rr">+84</div></div>
+      </div>
+    </div>
+
+    <!-- ENGAGEMENT -->
+    <div class="card">
+      <div class="ch">
+        <div class="ch-l">
+          <div class="ch-ico" style="background:var(--blue-faint);">📍</div>
+          <div><div class="ct">Engagement & Asistencia</div><div class="cs">Molinetes · Presencia en cancha 2026</div></div>
+        </div>
+        <a class="cl">Historial →</a>
+      </div>
+      <div class="cb">
+        <div style="display:flex;align-items:flex-end;gap:7px;">
+          <div class="bn" style="font-size:46px;color:var(--blue);line-height:.85;">66.4</div>
+          <div style="padding-bottom:6px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;color:var(--blue);">%</div>
+          <div style="padding-bottom:6px;"><span class="d up">▲ +4.1%</span><div style="font-size:10px;color:var(--muted);margin-top:3px;">asistencia media socios</div></div>
+        </div>
+        <div class="mg mg2">
+          <div class="ms"><div class="ms-val" style="color:var(--blue)">4.2</div><div class="ms-lbl">Visitas prom/año</div><div class="ms-d" style="color:var(--green)">▲ +0.3 vs 2025</div></div>
+          <div class="ms"><div class="ms-val" style="color:var(--amber)">87</div><div class="ms-lbl">Asist. perfecta</div><div class="ms-d" style="color:var(--muted)">todos los partidos</div></div>
+          <div class="ms"><div class="ms-val" style="color:var(--red)">614</div><div class="ms-lbl">Sin asistir</div><div class="ms-d" style="color:var(--red)">riesgo de baja</div></div>
+          <div class="ms"><div class="ms-val">15</div><div class="ms-lbl">Partidos local</div><div class="ms-d" style="color:var(--muted)">temporada 2026</div></div>
+        </div>
+        <div class="dv"></div>
+        <div class="sl2">Distribución de asistencias por socio</div>
+        <div class="chart-box"><canvas id="engBar" height="90"></canvas></div>
+        <div class="lgd" style="margin-top:4px;">
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--red);"></div>0 partidos (614)</div>
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--amber);"></div>1–3 (420)</div>
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--c4);"></div>4–9 (1.190)</div>
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--c1);"></div>10+ (623)</div>
+        </div>
+        <div class="dv"></div>
+        <div class="sl2">Asistencia total por partido — temporada</div>
+        <div class="chart-box"><canvas id="asistLine" height="80"></canvas></div>
+        <div class="lgd" style="margin-top:4px;">
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--c1);"></div>Socios presentes</div>
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--c4);"></div>Tickets externos</div>
+        </div>
+        <div class="dv"></div>
+        <div class="mc">
+          <div class="mc-t">San Martín <span class="vs2">VS</span> Belgrano</div>
+          <div style="text-align:right;"><div class="mc-d">02 MAR 2026 · 3.241 ingresos</div><div style="font-size:10px;color:var(--muted);margin-top:2px;">1.892 socios · 1.349 tickets</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ SECCIÓN 3: PLANTEL ═══ -->
+  <div class="sr r-plan" id="sec2">
+
+    <!-- CONTRATOS -->
+    <div class="card">
+      <div class="ch">
+        <div class="ch-l">
+          <div class="ch-ico" style="background:var(--amber-bg);">📋</div>
+          <div><div class="ct">Contratos de Plantel</div><div class="cs">28 jugadores primera · vencimientos y salarios 2026</div></div>
+        </div>
+        <div style="display:flex;gap:5px;align-items:center;"><span class="bdg red">2 urgentes</span><a class="cl">Ver todos →</a></div>
+      </div>
+      <div class="cb" style="flex-direction:row;gap:14px;">
+        <div style="flex:1;">
+          <div class="sl2">Vencimientos próximos</div>
+          <div class="tr"><div class="tav">LR</div><div class="ti"><div class="tn">Lucas Rodríguez</div><div class="tm">DEF · TITULAR · $160k/mes</div></div><div class="trt"><span class="bdg red">12 días</span></div></div>
+          <div class="tr"><div class="tav">MV</div><div class="ti"><div class="tn">Matías Vargas</div><div class="tm">MED · TITULAR · $145k/mes</div></div><div class="trt"><span class="bdg red">28 días</span></div></div>
+          <div class="tr"><div class="tav">FG</div><div class="ti"><div class="tn">Fernando García</div><div class="tm">DEL · TITULAR · $180k/mes</div></div><div class="trt"><span class="bdg amb">68 días</span></div></div>
+          <div class="tr"><div class="tav">CS</div><div class="ti"><div class="tn">Carlos Suárez</div><div class="tm">MED · SUPLENTE · $90k/mes</div></div><div class="trt"><span class="bdg amb">82 días</span></div></div>
+          <div class="tr"><div class="tav">JP</div><div class="ti"><div class="tn">Jorge Pereyra</div><div class="tm">ARQ · TITULAR · $175k/mes</div></div><div class="trt"><span class="bdg grn">dic 2026</span></div></div>
+          <div class="tr"><div class="tav">AR</div><div class="ti"><div class="tn">Agustín Romano</div><div class="tm">MED · SUPLENTE · $85k/mes</div></div><div class="trt"><span class="bdg grn">jul 2027</span></div></div>
+          <div class="tr"><div class="tav">NB</div><div class="ti"><div class="tn">Nicolás Barraza</div><div class="tm">DEF · SUPLENTE · $95k/mes</div></div><div class="trt"><span class="bdg grn">dic 2027</span></div></div>
+          <div class="dv"></div>
+          <div class="mg mg4">
+            <div class="ms" style="text-align:center;"><div class="ms-val" style="color:var(--red)">2</div><div class="ms-lbl">Crítico &lt;30d</div></div>
+            <div class="ms" style="text-align:center;"><div class="ms-val" style="color:var(--amber)">3</div><div class="ms-lbl">Próximo ≤90d</div></div>
+            <div class="ms" style="text-align:center;"><div class="ms-val" style="color:var(--green)">23</div><div class="ms-lbl">Vigente</div></div>
+            <div class="ms" style="text-align:center;"><div class="ms-val">$4.2M</div><div class="ms-lbl">Masa salarial</div></div>
+          </div>
+        </div>
+        <div style="width:190px;flex-shrink:0;">
+          <div class="sl2">Estado de contratos</div>
+          <div class="chart-box"><canvas id="contDonut" height="160"></canvas></div>
+          <div class="lgd" style="margin-top:4px;flex-direction:column;gap:5px;">
+            <div class="lgd-item"><div class="lgd-dot" style="background:var(--red);"></div>Crítico — 2 jugadores</div>
+            <div class="lgd-item"><div class="lgd-dot" style="background:var(--amber);"></div>Próximo — 3 jugadores</div>
+            <div class="lgd-item"><div class="lgd-dot" style="background:var(--green);"></div>Vigente — 23 jugadores</div>
+          </div>
+          <div class="dv"></div>
+          <div class="sl2">Distribución salarial</div>
+          <div class="chart-box"><canvas id="salBar" height="100"></canvas></div>
+          <div class="lgd" style="margin-top:4px;">
+            <div class="lgd-item"><div class="lgd-dot" style="background:var(--c1);"></div>Por posición (ARS/mes)</div>
+          </div>
+          <div class="dv"></div>
+          <div class="row blu"><div class="rl">Primera división</div><div class="rr">28</div></div>
+          <div class="row"><div class="rl" style="color:var(--muted)">Reserva</div><div class="rr" style="color:var(--muted)">22</div></div>
+          <div class="row"><div class="rl" style="color:var(--muted)">Inferiores</div><div class="rr" style="color:var(--muted)">42</div></div>
+          <div class="row"><div class="rl" style="color:var(--muted)">Sueldo promedio 1era</div><div class="rr" style="color:var(--muted)">$148k</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALERTAS -->
+    <div class="card">
+      <div class="ch">
+        <div class="ch-l">
+          <div class="ch-ico" style="background:var(--red-bg);">🔔</div>
+          <div><div class="ct">Alertas & Acciones del Día</div><div class="cs">Requieren decisión gerencial</div></div>
+        </div>
+        <span class="bdg red">4 pendientes</span>
+      </div>
+      <div class="cb">
+        <div class="al hi"><div class="ai">🔴</div><div class="ab2"><div class="at3">Contrato Rodríguez vence en 12 días</div><div class="ad2">Sin oferta de renovación enviada. Riesgo de perder defensor titular. Costo est. reemplazo: $200k/mes.</div></div><div class="at4">HOY</div></div>
+        <div class="al hi"><div class="ai">🔴</div><div class="ab2"><div class="at3">Sponsor Movistar sin confirmar renovación</div><div class="ad2">Vence 26 mar. $3.1M anuales en riesgo. Sin respuesta a propuesta enviada hace 14 días.</div></div><div class="at4">HOY</div></div>
+        <div class="al md"><div class="ai">🟡</div><div class="ab2"><div class="at3">Brecha caja vs. compromisos salariales: −$1.9M</div><div class="ad2">Cobros proyectados de socios y sponsors cubren la brecha en aprox. 15 días.</div></div><div class="at4">AYER</div></div>
+        <div class="al md"><div class="ai">🟡</div><div class="ab2"><div class="at3">70 socios con deuda mayor a 3 meses</div><div class="ad2">Deuda acumulada estimada $420k. Campaña de contacto directo recomendada antes del partido del 15/3.</div></div><div class="at4">AYER</div></div>
+        <div class="al lo"><div class="ai">🔵</div><div class="ab2"><div class="at3">614 socios sin asistir en toda la temporada</div><div class="ad2">21.6% del padrón. Alto riesgo de baja a fin de año. Se sugiere campaña de beneficios y engagement.</div></div><div class="at4">3D</div></div>
+        <div class="al lo"><div class="ai">🔵</div><div class="ab2"><div class="at3">Contrato Vargas vence en 28 días</div><div class="ad2">Mediocampista titular. Propuesta de renovación en elaboración. Requiere aprobación para enviar.</div></div><div class="at4">3D</div></div>
+        <div class="al ok"><div class="ai">🟢</div><div class="ab2"><div class="at3">Próximo partido vs. Gimnasia — 15 mar</div><div class="ad2">Proyección asistencia: 2.800–3.100 personas. Molinetes configurados. Venta online activa.</div></div><div class="at4">7D</div></div>
+        <div class="dv"></div>
+        <div class="sl2">Resumen semáforo de gestión</div>
+        <div class="mg mg3">
+          <div class="ms" style="background:var(--red-bg);border-color:var(--red-b);">
+            <div class="ms-val" style="color:var(--red)">2</div>
+            <div class="ms-lbl" style="color:var(--red)">🔴 Urgente</div>
+            <div class="ms-d" style="color:var(--red)">Acción hoy</div>
+          </div>
+          <div class="ms" style="background:var(--amber-bg);border-color:var(--amber-b);">
+            <div class="ms-val" style="color:var(--amber)">2</div>
+            <div class="ms-lbl" style="color:var(--amber)">🟡 Atención</div>
+            <div class="ms-d" style="color:var(--amber)">Esta semana</div>
+          </div>
+          <div class="ms" style="background:var(--green-bg);border-color:var(--green-b);">
+            <div class="ms-val" style="color:var(--green)">3</div>
+            <div class="ms-lbl" style="color:var(--green)">🟢 Info</div>
+            <div class="ms-d" style="color:var(--green)">A seguir</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ SECCIÓN 4: SPONSORS ═══ -->
+  <div class="sr r-sp" id="sec3">
+
+    <!-- SPONSORS -->
+    <div class="card">
+      <div class="ch">
+        <div class="ch-l">
+          <div class="ch-ico" style="background:var(--blue-faint);">🤝</div>
+          <div><div class="ct">Sponsors & Partnerships</div><div class="cs">7 contratos activos · $14.8M ARS/año · ejercicio 2026</div></div>
+        </div>
+        <a class="cl">Ver todos →</a>
+      </div>
+      <div class="cb" style="flex-direction:row;gap:14px;">
+        <div style="flex:1;">
+          <div class="sl2">Ingreso anual por sponsor (ARS)</div>
+          <div class="chart-box"><canvas id="spBar" height="130"></canvas></div>
+          <div class="lgd" style="margin-top:4px;">
+            <div class="lgd-item"><div class="lgd-dot" style="background:var(--c1);"></div>Main sponsor</div>
+            <div class="lgd-item"><div class="lgd-dot" style="background:var(--c2);"></div>Gold</div>
+            <div class="lgd-item"><div class="lgd-dot" style="background:var(--c3);"></div>Silver</div>
+            <div class="lgd-item"><div class="lgd-dot" style="background:var(--c4);"></div>Local / Digital</div>
+            <div class="lgd-item"><div class="lgd-dot" style="background:var(--red);"></div>En riesgo</div>
+          </div>
+          <div class="dv"></div>
+          <div class="sl2">Cumplimiento de beneficios comprometidos — 2026</div>
+          <div class="chart-box"><canvas id="spCompBar" height="100"></canvas></div>
+          <div class="lgd" style="margin-top:4px;">
+            <div class="lgd-item"><div class="lgd-dot" style="background:var(--c1);"></div>Entregado</div>
+            <div class="lgd-item"><div class="lgd-dot" style="background:var(--border2);"></div>Pendiente</div>
+          </div>
+        </div>
+        <div style="width:230px;flex-shrink:0;">
+          <div class="sl2">Contratos vigentes</div>
+          <div class="tr"><div class="sp-logo">BAN</div><div class="ti"><div class="tn">Banco Regional</div><div class="tm">MAIN · CAMISETA</div></div><div class="trt"><div class="sp-amt">$4.2M</div><span class="bdg grn" style="display:inline-flex;margin-top:2px;">dic 2026</span></div></div>
+          <div class="tr"><div class="sp-logo">MOV</div><div class="ti"><div class="tn">Movistar</div><div class="tm">GOLD · VALLA + DIGITAL</div></div><div class="trt"><div class="sp-amt">$3.1M</div><span class="bdg red" style="display:inline-flex;margin-top:2px;">26 mar ⚠️</span></div></div>
+          <div class="tr"><div class="sp-logo">PUM</div><div class="ti"><div class="tn">Puma</div><div class="tm">INDUMENTARIA</div></div><div class="trt"><div class="sp-amt">$2.4M</div><span class="bdg grn" style="display:inline-flex;margin-top:2px;">dic 2026</span></div></div>
+          <div class="tr"><div class="sp-logo">YPF</div><div class="ti"><div class="tn">YPF</div><div class="tm">SILVER · VALLA</div></div><div class="trt"><div class="sp-amt">$1.8M</div><span class="bdg grn" style="display:inline-flex;margin-top:2px;">jun 2026</span></div></div>
+          <div class="tr"><div class="sp-logo">QLM</div><div class="ti"><div class="tn">Quilmes</div><div class="tm">GOLD · ESTADIO</div></div><div class="trt"><div class="sp-amt">$1.4M</div><span class="bdg grn" style="display:inline-flex;margin-top:2px;">dic 2026</span></div></div>
+          <div class="tr"><div class="sp-logo">OFF</div><div class="ti"><div class="tn">La Oferta Celeste</div><div class="tm">LOCAL · DIGITAL</div></div><div class="trt"><div class="sp-amt">$0.48M</div><span class="bdg grn" style="display:inline-flex;margin-top:2px;">ago 2026</span></div></div>
+          <div class="dv"></div>
+          <div class="mg mg2">
+            <div class="ms"><div class="ms-val" style="color:var(--blue)">$14.8M</div><div class="ms-lbl">Total anual</div></div>
+            <div class="ms"><div class="ms-val" style="color:var(--red)">1</div><div class="ms-lbl">Por vencer</div></div>
+            <div class="ms"><div class="ms-val" style="color:var(--green)">6</div><div class="ms-lbl">Vigentes OK</div></div>
+            <div class="ms"><div class="ms-val" style="color:var(--amber)">78%</div><div class="ms-lbl">Beneficios OK</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPOSICIÓN PADRÓN (compacto) -->
+    <div class="card">
+      <div class="ch">
+        <div class="ch-l">
+          <div class="ch-ico" style="background:var(--blue-faint);">🥧</div>
+          <div><div class="ct">Composición del Padrón</div><div class="cs">Distribución de socios por categoría</div></div>
+        </div>
+      </div>
+      <div class="cb">
+        <div class="chart-box"><canvas id="socDonut" height="180"></canvas></div>
+        <div class="lgd" style="justify-content:center;margin-top:4px;">
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--c1);"></div>Pleno 1.204 (42%)</div>
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--c3);"></div>Adherente 1.128 (40%)</div>
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--c5);"></div>Jubilado 515 (18%)</div>
+        </div>
+        <div class="dv"></div>
+        <div class="sl2">Estado de pago por categoría</div>
+        <div class="chart-box"><canvas id="pagoCatBar" height="100"></canvas></div>
+        <div class="lgd" style="margin-top:4px;">
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--green);"></div>Al día</div>
+          <div class="lgd-item"><div class="lgd-dot" style="background:var(--red);"></div>Morosos</div>
+        </div>
+        <div class="dv"></div>
+        <div class="row blu"><div class="rl">Socios al día (total)</div><div class="rr">2.324 · 81.6%</div></div>
+        <div class="row red"><div class="rl">Socios morosos (total)</div><div class="rr">523 · 18.4%</div></div>
+        <div class="row grn"><div class="rl">Recaudación cuotas (año)</div><div class="rr">$41.2M</div></div>
+        <div class="row amb"><div class="rl">Deuda acumulada total</div><div class="rr">$2.4M</div></div>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- /cnt -->
+</div><!-- /wrap -->
+
+<div class="footer">© 2026 NEXUS SPORTS ERP · Club Atlético San Martín · Dashboard Gerencial Anual · Actualizado: 08/03/2026 09:14 hs</div>
+
+<script>
+/* ═══════════ CHARTS ═══════════ */
+const s=document.createElement('script');
+s.src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js';
+s.onload=init;
+document.head.appendChild(s);
+
+function init(){
+  Chart.defaults.font.family="'Barlow',sans-serif";
+  Chart.defaults.font.size=10;
+  Chart.defaults.color='#6a8299';
+  Chart.defaults.plugins.legend.display=false;
+  const tt={backgroundColor:'#fff',titleColor:'#141e2a',bodyColor:'#344556',borderColor:'#dde3e9',borderWidth:1,padding:8,cornerRadius:4};
+  Object.assign(Chart.defaults.plugins.tooltip,tt);
+  const gc='rgba(0,0,0,0.035)';
+
+  /* FINANCIERO ANUAL — bar+line */
+  new Chart(document.getElementById('finChart'),{
+    type:'bar',
+    data:{
+      labels:['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'],
+      datasets:[
+        {label:'Ingresos 2026',data:[7.2,7.8,8.1,8.4,8.0,8.6,8.9,9.1,8.7,9.4,7.8,7.2],
+         backgroundColor:'rgba(24,86,160,0.72)',borderRadius:3,order:2},
+        {label:'Egresos 2026',data:[6.6,7.0,6.9,7.4,7.6,7.2,7.8,8.0,7.5,8.1,7.0,6.8],
+         backgroundColor:'rgba(184,50,38,0.55)',borderRadius:3,order:2},
+        {label:'Ingresos 2025',data:[6.2,6.5,6.8,6.9,7.0,7.1,7.4,7.6,7.2,7.8,6.4,5.8],
+         backgroundColor:'rgba(132,188,236,0.35)',borderRadius:3,order:3},
+        {label:'Neto 2026',type:'line',
+         data:[0.6,0.8,1.2,1.0,0.4,1.4,1.1,1.1,1.2,1.3,0.8,0.4],
+         borderColor:'#c47808',backgroundColor:'rgba(196,120,8,0.07)',
+         borderWidth:2.5,pointRadius:3,pointBackgroundColor:'#c47808',
+         tension:0.35,fill:true,order:1,yAxisID:'y2'}
+      ]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:true,
+      interaction:{mode:'index',intersect:false},
+      scales:{
+        x:{grid:{display:false}},
+        y:{grid:{color:gc},ticks:{callback:v=>'$'+v+'M'},title:{display:true,text:'Millones ARS',font:{size:9}}},
+        y2:{position:'right',grid:{display:false},ticks:{callback:v=>'$'+v+'M'},title:{display:true,text:'Resultado neto',font:{size:9}}}
+      }
+    }
+  });
+
+  /* CAJA PROYECCIÓN */
+  new Chart(document.getElementById('cajaLine'),{
+    type:'line',
+    data:{
+      labels:['Hoy','Sem 1','Sem 2','Sem 3','Sem 4','Sem 5','Sem 6'],
+      datasets:[
+        {label:'Caja proyectada',data:[2.3,1.6,3.2,3.8,4.1,4.8,5.2],
+         borderColor:'#2474cc',backgroundColor:'rgba(36,116,204,0.08)',
+         fill:true,tension:0.4,borderWidth:2,pointRadius:3,pointBackgroundColor:'#2474cc'},
+        {label:'Mínimo operativo',data:[1.5,1.5,1.5,1.5,1.5,1.5,1.5],
+         borderColor:'#b83226',borderDash:[5,4],borderWidth:1.5,
+         pointRadius:0,fill:false,tension:0}
+      ]
+    },
+    options:{
+      responsive:true,
+      scales:{
+        x:{grid:{display:false}},
+        y:{grid:{color:gc},ticks:{callback:v=>'$'+v+'M'}}
+      },
+      plugins:{legend:{display:false}}
+    }
+  });
+
+  /* INGRESOS DONUT */
+  new Chart(document.getElementById('ingresosDonut'),{
+    type:'doughnut',
+    data:{
+      labels:['Cuotas socios','Ticketing','Sponsors','Merchandising','Otros'],
+      datasets:[{
+        data:[41.4,21.6,14.8,8.2,12.4],
+        backgroundColor:['#1856a0','#4e98de','#84bcec','#b8d8f6','#c8dff0'],
+        borderWidth:2,borderColor:'#fff',hoverOffset:5
+      }]
+    },
+    options:{cutout:'60%',plugins:{tooltip:{callbacks:{label:c=>' '+c.label+': $'+c.raw+'M ('+Math.round(c.raw/98.4*100)+'%)'}}}}
+  });
+
+  /* SOCIOS EVOLUCIÓN LINE */
+  new Chart(document.getElementById('socLine'),{
+    type:'line',
+    data:{
+      labels:['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'],
+      datasets:[
+        {label:'Socios 2026',data:[2602,2650,2710,2762,2790,2810,2820,2834,2839,2847,null,null],
+         borderColor:'#1856a0',backgroundColor:'rgba(24,86,160,0.08)',
+         fill:true,tension:0.3,borderWidth:2.5,pointRadius:3,pointBackgroundColor:'#1856a0'},
+        {label:'Socios 2025',data:[2380,2410,2450,2490,2510,2530,2550,2560,2570,2580,2590,2602],
+         borderColor:'#84bcec',backgroundColor:'transparent',
+         borderDash:[4,3],tension:0.3,borderWidth:1.5,pointRadius:2,pointBackgroundColor:'#84bcec'},
+        {label:'Objetivo',data:[3200,3200,3200,3200,3200,3200,3200,3200,3200,3200,3200,3200],
+         borderColor:'#c47808',borderDash:[6,4],borderWidth:1.5,
+         pointRadius:0,fill:false,tension:0}
+      ]
+    },
+    options:{
+      responsive:true,
+      scales:{
+        x:{grid:{display:false}},
+        y:{grid:{color:gc},min:2200,ticks:{stepSize:200}}
+      },
+      plugins:{legend:{display:false}}
+    }
+  });
+
+  /* MOROSIDAD HORIZONTAL */
+  new Chart(document.getElementById('morBar'),{
+    type:'bar',
+    data:{
+      labels:['1 mes','2–3 meses','+3 meses'],
+      datasets:[{
+        label:'Socios morosos',
+        data:[312,141,70],
+        backgroundColor:['#c47808','#b85820','#b83226'],
+        borderRadius:4,barThickness:20
+      }]
+    },
+    options:{
+      indexAxis:'y',
+      responsive:true,
+      scales:{
+        x:{grid:{color:gc},ticks:{font:{size:9}},title:{display:true,text:'Cantidad de socios',font:{size:9}}},
+        y:{grid:{display:false},ticks:{font:{size:10}}}
+      },
+      plugins:{tooltip:{callbacks:{label:c=>' '+c.raw+' socios · '+c.label}}}
+    }
+  });
+
+  /* MOROSIDAD EVOLUCIÓN LINE */
+  new Chart(document.getElementById('morLine'),{
+    type:'line',
+    data:{
+      labels:['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT'],
+      datasets:[
+        {label:'% Morosos',data:[16.8,17.2,18.4,null,null,null,null,null,null,null],
+         borderColor:'#b83226',backgroundColor:'rgba(184,50,38,0.08)',
+         fill:true,tension:0.3,borderWidth:2,pointRadius:3,pointBackgroundColor:'#b83226'},
+        {label:'Umbral crítico',data:[20,20,20,20,20,20,20,20,20,20],
+         borderColor:'#c47808',borderDash:[5,4],borderWidth:1.5,
+         pointRadius:0,fill:false,tension:0}
+      ]
+    },
+    options:{
+      responsive:true,
+      scales:{
+        x:{grid:{display:false}},
+        y:{grid:{color:gc},ticks:{callback:v=>v+'%'},min:10,max:25}
+      },
+      plugins:{legend:{display:false}}
+    }
+  });
+
+  /* ENGAGEMENT BAR */
+  new Chart(document.getElementById('engBar'),{
+    type:'bar',
+    data:{
+      labels:['0 partidos','1–3','4–6','7–9','10–12','13–14','Todos (15)'],
+      datasets:[{
+        label:'Socios',
+        data:[614,420,510,680,390,146,87],
+        backgroundColor:['#b83226','#c47808','#84bcec','#4e98de','#2474cc','#1856a0','#166832'],
+        borderRadius:3,barThickness:22
+      }]
+    },
+    options:{
+      responsive:true,
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:9}}},
+        y:{grid:{color:gc},title:{display:true,text:'Cantidad de socios',font:{size:9}}}
+      },
+      plugins:{tooltip:{callbacks:{label:c=>' '+c.raw+' socios'}}}
+    }
+  });
+
+  /* ASISTENCIA STACKED BAR */
+  new Chart(document.getElementById('asistLine'),{
+    type:'bar',
+    data:{
+      labels:['F1','F2','F3','F4','F5','F6','F7','F8','F9','F10','F11','F12','F13','F14','F15'],
+      datasets:[
+        {label:'Socios presentes',
+         data:[1820,2100,1950,2400,1780,2250,2600,1900,2300,1892,2150,2400,1980,2200,2050],
+         backgroundColor:'rgba(24,86,160,0.75)',borderRadius:[3,3,0,0],stack:'a'},
+        {label:'Tickets externos',
+         data:[680,750,620,800,540,900,980,640,720,1349,780,860,600,700,680],
+         backgroundColor:'rgba(78,152,222,0.5)',borderRadius:[3,3,0,0],stack:'a'}
+      ]
+    },
+    options:{
+      responsive:true,
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:8}}},
+        y:{grid:{color:gc},stacked:true,title:{display:true,text:'Personas',font:{size:9}}}
+      }
+    }
+  });
+
+  /* CONTRATOS DONUT */
+  new Chart(document.getElementById('contDonut'),{
+    type:'doughnut',
+    data:{
+      labels:['Crítico (<30d)','Próximo (31–90d)','Vigente (>90d)'],
+      datasets:[{
+        data:[2,3,23],
+        backgroundColor:['#b83226','#c47808','#166832'],
+        borderWidth:2,borderColor:'#fff',hoverOffset:4
+      }]
+    },
+    options:{cutout:'62%',plugins:{tooltip:{callbacks:{label:c=>' '+c.label+': '+c.raw+' jugadores'}}}}
+  });
+
+  /* SALARIOS BAR */
+  new Chart(document.getElementById('salBar'),{
+    type:'bar',
+    data:{
+      labels:['ARQ','DEF','MED','DEL'],
+      datasets:[{
+        label:'Sueldo promedio',
+        data:[175,128,112,168],
+        backgroundColor:['#1856a0','#2474cc','#4e98de','#84bcec'],
+        borderRadius:3,barThickness:22
+      }]
+    },
+    options:{
+      responsive:true,
+      scales:{
+        x:{grid:{display:false}},
+        y:{grid:{color:gc},ticks:{callback:v=>'$'+v+'k'}}
+      },
+      plugins:{tooltip:{callbacks:{label:c=>' $'+c.raw+'k/mes promedio'}}}
+    }
+  });
+
+  /* SPONSORS BAR */
+  new Chart(document.getElementById('spBar'),{
+    type:'bar',
+    data:{
+      labels:['Banco\nRegional','Movistar','Puma','YPF','Quilmes','La Oferta','Otros'],
+      datasets:[{
+        label:'Ingreso anual',
+        data:[4200,3100,2400,1800,1400,480,820],
+        backgroundColor:['#1856a0','#b83226','#2474cc','#4e98de','#2474cc','#84bcec','#b8d8f6'],
+        borderRadius:4,barThickness:22
+      }]
+    },
+    options:{
+      responsive:true,
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:9},maxRotation:25}},
+        y:{grid:{color:gc},ticks:{callback:v=>'$'+v/1000+'k'},title:{display:true,text:'ARS (miles)',font:{size:9}}}
+      },
+      plugins:{tooltip:{callbacks:{label:c=>' $'+c.raw.toLocaleString('es-AR')+' ARS/año'}}}
+    }
+  });
+
+  /* SPONSORS CUMPLIMIENTO HORIZONTAL */
+  new Chart(document.getElementById('spCompBar'),{
+    type:'bar',
+    data:{
+      labels:['Banco Reg.','Puma','YPF','Quilmes','Movistar','La Oferta'],
+      datasets:[
+        {label:'Entregado',data:[95,88,82,75,60,90],
+         backgroundColor:'rgba(24,86,160,0.75)',borderRadius:[0,3,3,0],stack:'a',barThickness:14},
+        {label:'Pendiente',data:[5,12,18,25,40,10],
+         backgroundColor:'rgba(198,207,216,0.5)',borderRadius:[0,3,3,0],stack:'a',barThickness:14}
+      ]
+    },
+    options:{
+      indexAxis:'y',responsive:true,
+      scales:{
+        x:{grid:{color:gc},max:100,ticks:{callback:v=>v+'%'},stacked:true},
+        y:{grid:{display:false},ticks:{font:{size:9}},stacked:true}
+      },
+      plugins:{tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+c.raw+'%'}}}
+    }
+  });
+
+  /* SOCIOS DONUT (bottom right) */
+  new Chart(document.getElementById('socDonut'),{
+    type:'doughnut',
+    data:{
+      labels:['Pleno','Adherente','Jubilado'],
+      datasets:[{
+        data:[1204,1128,515],
+        backgroundColor:['#1856a0','#4e98de','#b8d8f6'],
+        borderWidth:2,borderColor:'#fff',hoverOffset:4
+      }]
+    },
+    options:{cutout:'62%',plugins:{tooltip:{callbacks:{label:c=>' '+c.label+': '+c.raw.toLocaleString('es-AR')+' ('+Math.round(c.raw/2847*100)+'%)'}}}}
+  });
+
+  /* PAGO POR CATEGORÍA */
+  new Chart(document.getElementById('pagoCatBar'),{
+    type:'bar',
+    data:{
+      labels:['Pleno','Adherente','Jubilado'],
+      datasets:[
+        {label:'Al día',data:[1010,968,346],backgroundColor:'rgba(22,104,50,0.7)',borderRadius:[3,3,0,0],stack:'a',barThickness:28},
+        {label:'Morosos',data:[194,160,169],backgroundColor:'rgba(184,50,38,0.6)',borderRadius:[3,3,0,0],stack:'a',barThickness:28}
+      ]
+    },
+    options:{
+      responsive:true,
+      scales:{
+        x:{grid:{display:false}},
+        y:{grid:{color:gc},stacked:true,ticks:{stepSize:400},title:{display:true,text:'Socios',font:{size:9}}}
+      },
+      plugins:{tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+c.raw+' socios'}}}
+    }
+  });
+
+  /* ── SYNC SIDEBAR HEIGHTS ── */
+  function syncLabels(){
+    const sections=['sec0','sec1','sec2','sec3'];
+    const labels=['lbl0','lbl1','lbl2','lbl3'];
+    sections.forEach((id,i)=>{
+      const sec=document.getElementById(id);
+      const lbl=document.getElementById(labels[i]);
+      if(sec&&lbl) lbl.style.height=sec.offsetHeight+'px';
+    });
+  }
+  setTimeout(syncLabels,400);
+  window.addEventListener('resize',syncLabels);
+}
+</script>
+</body>
+</html>
